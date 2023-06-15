@@ -7,9 +7,6 @@
         xmlns:controls="clr-namespace:WpfCustomControlLibrary.Controls;assembly=WpfCustomControlLibrary"
         mc:Ignorable="d" DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow" Height="800" Width="1200">
-    <!--<Window.Resources>
-        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Generic.xaml"/>
-    </Window.Resources>-->
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,8 +16,6 @@
 
         <StackPanel>
             <controls:WatermarkTextBox Watermark="Введите текст..." Margin="10"/>
-            <!--<controls:FilterTextBox Height="36" Source="{Binding ElementName=userlistbox, Path=Items}" PropertyPath="Name" />-->
-
 
             <controls:ChipsPanel Margin="10" WatermarkText="Ввыпып.." ItemsSource="{Binding TreeUsers}" IsBorderOwnerVisible="True">
                 <controls:ChipsPanel.ItemTemplate>
@@ -112,7 +107,7 @@
                 </controls:ClosableTabControl>
             </Grid>
 
-            <Grid Margin="10">
+            <Grid Margin="25">
                 <controls:MultiselectComboBox SelectionMode="Multiple" ItemsSource="{Binding TreeUsers}" DisplayMode="AdvancedWithTemplating"
                                               DisplayMemberPath="Name" FilterMemberPath="Name"></controls:MultiselectComboBox>
             </Grid>
