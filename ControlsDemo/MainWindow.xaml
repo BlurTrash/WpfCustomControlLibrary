@@ -127,7 +127,7 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="AccordionPanel" FontWeight="Normal" VerticalAlignment="Center"/>
+                            <TextBlock Text="AccordionPanel" FontWeight="Medium" Foreground="#495057" VerticalAlignment="Center"/>
                             <controls:ButtonPrime Grid.Column="1" Icon="Filter" Content="Поиск" HorizontalContentAlignment="Center"/>
                             <controls:ButtonPrime Grid.Column="2" Icon="FilterSlash" Content="Очистить" Margin="10 0 0 0" IsOutlined="True"/>
                         </Grid>
