@@ -1,0 +1,42 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Icons.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ListView/ListViewPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ListBox/ListBoxPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ToggleButton/ToggleButtonPrimeStyles.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/WatermarkTextBox/WatermarkTextBoxPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ChipsPanel/ChipsPanelPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Icons.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/MultiselectBaseCombobox/MultiselectBaseComboboxPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/FilterTextBox/FilterTextBoxPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ButtonPrime/ButtonPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/NumericUpDown/NumericUpDownPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/TimePicker/TimePickerPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/OverlayPanel/OverlayPanelPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ComboBox/Generic.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/PaginationPanel/PaginationPanelPrimeStyle.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ClosableTabControl/ClosableTabControlPrimeStylexaml.xaml"/>
+
+
+        <!--WindowsStylesBase-->
+        <!--<ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/WatermarkTextBox/Themes/WatermarkTextBox.xaml"/>-->
+        <!--<ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/FilterTextBox/Themes/FilterTextBox.xaml"/>-->
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/NumericUpDown/Themes/NumericUpDown.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/TimePicker/Themes/TimePicker.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/TimePicker/Themes/TimeSpanUpDown.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/OverlayPanel/Themes/OverlayPanel.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/PaginationPanel/Themes/PaginationPanel.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/ClosableTabControl/Themes/ClosableTabControl.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/ClosableTabControl/Themes/ClosableTabItem.xaml"/>
+
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/MultiselectComboBox/Themes/ExtendedItemsControl.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/MultiselectComboBox/Themes/ExtendedItemsControlItem.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/MultiselectComboBox/Themes/ExtendedListBox.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/MultiselectComboBox/Themes/ExtendedListBoxItem.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/MultiselectComboBox/Themes/MultiselectComboBox.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Controls/AccordionPanel/Themes/AccordionPanel.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

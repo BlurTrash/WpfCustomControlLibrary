@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Цвета-->
+    <Color x:Key="PrimaryColor">#3B82F6</Color>
+    <Color x:Key="ControlBorderColor">#CED4DA</Color>
+    <Color x:Key="PlaceholderColor">#6C757D</Color>
+    <Color x:Key="TextColor">#495057</Color>
+    <Color x:Key="IconColor">#6C757D</Color>
+    <Color x:Key="SeparatorColor">#CED4DA</Color>
+    <Color x:Key="HighlightColor">#EFF6FF</Color> 
+    <Color x:Key="HighlightTextColor">#1D4ED8</Color>
+    <Color x:Key="HoverBorderColor">#2563eb</Color> 
+    <Color x:Key="ErrorBorderColor">#E24C4C</Color>
+    <Color x:Key="FocusRingColor">#BFDBFE</Color>
+    <Color x:Key="PressedButtonColor">#1D4ED8</Color> 
+    <Color x:Key="BorderColor">#DEE2E6</Color>
+    <Color x:Key="HoverColor">#e9ecef</Color>
+    <Color x:Key="HeaderColor">#F8F9FA</Color>
+    <Color x:Key="ListItemHoverBackgroundColor">#E9ECEF</Color>
+    <Color x:Key="PressedGrayColor">#dee2e6</Color>
+
+    <!--Кисти-->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{StaticResource ControlBorderColor}"/>
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+    <SolidColorBrush x:Key="IconBrush" Color="{StaticResource IconColor}"/>
+    <SolidColorBrush x:Key="SeparatorBrush" Color="{StaticResource SeparatorColor}"/>
+    <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}"/>
+    <SolidColorBrush x:Key="HighlightTextBrush" Color="{StaticResource HighlightTextColor}"/>
+    <SolidColorBrush x:Key="HoverBorderBrush" Color="{StaticResource HoverBorderColor}"/>
+    <SolidColorBrush x:Key="ErrorBorderBrush" Color="{StaticResource ErrorBorderColor}"/>
+    <SolidColorBrush x:Key="FocusRingBrush" Color="{StaticResource FocusRingColor}"/>
+    <SolidColorBrush x:Key="PressedButtonBrush" Color="{StaticResource PressedButtonColor}"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="HoverBrush" Color="{StaticResource HoverColor}"/>
+    <SolidColorBrush x:Key="HeaderBrush" Color="{StaticResource HeaderColor}"/>
+    <SolidColorBrush x:Key="ListItemHoverBackgroundBrush" Color="{StaticResource ListItemHoverBackgroundColor}"/>
+    <SolidColorBrush x:Key="PressedGrayBrush" Color="{StaticResource PressedGrayColor}"/>
+</ResourceDictionary>

@@ -1,0 +1,152 @@
+﻿<Window x:Class="ControlsDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControlsDemo"
+        xmlns:controls="clr-namespace:WpfCustomControlLibrary.Controls;assembly=WpfCustomControlLibrary"
+        mc:Ignorable="d" DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="800" Width="1200">
+    <!--<Window.Resources>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Generic.xaml"/>
+    </Window.Resources>-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <controls:WatermarkTextBox Watermark="Введите текст..." Margin="10"/>
+            <!--<controls:FilterTextBox Height="36" Source="{Binding ElementName=userlistbox, Path=Items}" PropertyPath="Name" />-->
+
+
+            <controls:ChipsPanel Margin="10" WatermarkText="Ввыпып.." ItemsSource="{Binding TreeUsers}" IsBorderOwnerVisible="True">
+                <controls:ChipsPanel.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Id}"/>
+                            <TextBlock Text=". "/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text=" - "/>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:ChipsPanel.ItemTemplate>
+            </controls:ChipsPanel>
+
+
+            <controls:MultiselectBaseComboBox Margin="10" 
+                                          ItemsSource="{Binding TreeUsers}"
+                                          SelectedValuePath="Id" SelectionMode="Multiple"
+                                          SelectedValues="{Binding SelectedValueUsers, UpdateSourceTrigger=PropertyChanged}" 
+                                          >
+                <controls:MultiselectBaseComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Id}"/>
+                            <TextBlock Text=". "/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text=" - "/>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:MultiselectBaseComboBox.ItemTemplate>
+            </controls:MultiselectBaseComboBox>
+
+            <controls:FilterTextBox Source="{Binding ElementName=userlistbox, Path=Items}" PropertyPath="Name" Margin="10"/>
+
+            <controls:ButtonPrime Icon="Refresh" Margin="0 10" IsRounded="True" Width="40" Height="40" Style="{StaticResource ButtonPrimeStyle}"/>
+            <controls:ButtonPrime Margin="10" Icon="Refresh" Content="sgsgsg" HorizontalContentAlignment="Center" Style="{StaticResource ButtonPrimeStyle}"/>
+            
+            <ListBox Margin="10" x:Name="userlistbox" ItemsSource="{Binding TreeUsers}" DisplayMemberPath="Name"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <controls:IntegerUpDown Value="23" Margin="10" Style="{StaticResource NumericUpDownPrimeStyle}"/>
+
+            <controls:TimePicker Format="DaysHoursMinutes" Margin="10" Style="{StaticResource TimePickerStylePrimeStyle}"/>
+
+            <Grid Margin="10">
+                <controls:ButtonPrime x:Name="openPanel" Command="{Binding ElementName=overlayPanel, Path=ToggleCommand}" Content="OverlayPanel - Popup" HorizontalContentAlignment="Center"/>
+                <controls:OverlayPanel ShowCloseIcon="True" x:Name="overlayPanel" Style="{StaticResource OverlayPanelPrimeStyle}"
+                                                       PlacementTarget="{Binding ElementName=openPanel}"
+                                                       Placement="Bottom">
+                    <Grid Margin="10" Width="300">
+                        <StackPanel>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                            <TextBlock Text="Тестовый текст ыпппппыпып"/>
+                        </StackPanel>
+                    </Grid>
+                </controls:OverlayPanel>
+            </Grid>
+
+            <Grid Margin="10" >
+                <controls:PaginationPanel Margin="10" Style="{StaticResource CustomPaginationPanelStyle}"
+                                      HorizontalAlignment="Center"
+                                      IsShowPageInfo="True" TotalDataCount="{Binding PaginationCount}"
+                                      MaxShownPageCount="3" PageDataCountType="Fifteen"
+                                      IsShowPageDataCountSelector="True" SelectionPageChanged="PaginationPanel_SelectionPageChanged"/>
+            </Grid>
+
+            <Grid Margin="10" Height="200">
+                <controls:ClosableTabControl Style="{StaticResource ClosableTabControlPrimeStyle}">
+                    <controls:ClosableTabItem Header="Вкладка1">
+                        <TextBlock Text="Контент 1"/>
+                    </controls:ClosableTabItem>
+                    <controls:ClosableTabItem Header="Вкладка2">
+                        <TextBlock Text="Контент 2"/>
+                    </controls:ClosableTabItem>
+                    <controls:ClosableTabItem Header="Вкладка3">
+                        <TextBlock Text="Контент 3"/>
+                    </controls:ClosableTabItem>
+                    <controls:ClosableTabItem Header="Вкладка4">
+                        <TextBlock Text="Контент 4"/>
+                    </controls:ClosableTabItem>
+                </controls:ClosableTabControl>
+            </Grid>
+
+            <Grid Margin="10">
+                <controls:MultiselectComboBox SelectionMode="Multiple" ItemsSource="{Binding TreeUsers}" DisplayMode="AdvancedWithTemplating"
+                                              DisplayMemberPath="Name" FilterMemberPath="Name"></controls:MultiselectComboBox>
+            </Grid>
+
+            <Grid Margin="10">
+                <controls:AccordionPanel ToogleButtonPosition="Left">
+                    <controls:AccordionPanel.HeaderContent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="AccordionPanel" FontWeight="Normal" VerticalAlignment="Center"/>
+                            <controls:ButtonPrime Grid.Column="1" Icon="Filter" Content="Поиск" HorizontalContentAlignment="Center"/>
+                            <controls:ButtonPrime Grid.Column="2" Icon="FilterSlash" Content="Очистить" Margin="10 0 0 0" IsOutlined="True"/>
+                        </Grid>
+                    </controls:AccordionPanel.HeaderContent>
+
+                    <controls:AccordionPanel.BodyContent>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                            <TextBlock Text="Контент внутри!!"/>
+                        </StackPanel>
+                    </controls:AccordionPanel.BodyContent>
+                </controls:AccordionPanel>
+            </Grid>
+            
+        </StackPanel>
+    </Grid>
+</Window>

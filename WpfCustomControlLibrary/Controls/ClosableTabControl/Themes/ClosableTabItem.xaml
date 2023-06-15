@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfCustomControlLibrary.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Icons.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="ClosableTabItemButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Name="border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Background" Value="DimGray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:ClosableTabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+        <Setter Property="BorderThickness"
+                  Value="1,1,1,0" />
+        <Setter Property="Margin"
+                  Value="0,2,0,0" />
+        <Setter Property="BorderBrush" Value="DimGray" />
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ClosableTabItem}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter x:Name="ContentSite"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      ContentSource="Header"
+                                      Margin="12,2,5,2"
+                                      RecognizesAccessKey="True" />
+                            <!--<Button Content="X" x:Name="PART_Button"
+                            Height="16"
+                            Width="16"
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Margin="4" />-->
+                            <Button x:Name="PART_Button"
+                                FontSize="9" Margin="5 0" Padding="2"
+                                FontWeight="Bold"
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Width="17" Height="17"
+                                Style="{StaticResource ClosableTabItemButton}">
+                                <Button.Content>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Foreground="Black" 
+                                               FontFamily="{StaticResource PrimeIcons}" 
+                                               Text="{Binding Source={x:Static local:IconType.Times}, Converter={StaticResource IconConverter}}"/>
+
+                                    <!--<Path Margin="4"
+                                          Data="M0,0 L10,10 M0,10 L10,0"
+                                          Stroke="{TemplateBinding Foreground}" 
+                                          StrokeThickness="1" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>-->
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background"
+                            Value="{x:Static SystemColors.ControlBrush}" />
+                            <Setter Property="Panel.ZIndex"
+                            Value="100" />
+                            <Setter Property="Margin"
+                            Value="0,0,0,-1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

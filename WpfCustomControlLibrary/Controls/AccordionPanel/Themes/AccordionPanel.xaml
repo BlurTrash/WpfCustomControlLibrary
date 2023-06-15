@@ -1,0 +1,149 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfCustomControlLibrary.Controls">
+
+    <SolidColorBrush x:Key="TextBrush" Color="#495057"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#CED4DA"/>
+    <SolidColorBrush x:Key="FocusRingBrush" Color="#BFDBFE"/>
+    <SolidColorBrush x:Key="HoverBorderBrush" Color="#3B82F6"/>
+    <SolidColorBrush x:Key="IconBrush" Color="#6C757D"/>
+    <SolidColorBrush x:Key="HoverBrush" Color="#e9ecef"/>
+
+    <Style x:Key="AccordoinToogleButtonTransform" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable" Value="true"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="MinWidth" Value="16"/>
+        <Setter Property="MinHeight" Value="16"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Background="{TemplateBinding Background}">
+                        <Viewbox Width="12" Height="12">
+                            <Path x:Name="ExpandImg" 
+                                      Stroke="{TemplateBinding Foreground}"
+                                      Data="M0,4 L8,12 L16,4"
+                                      StrokeThickness="2" 
+                                      VerticalAlignment="Center" 
+                                      HorizontalAlignment="Center"
+                                      StrokeStartLineCap="Round"
+                                      StrokeEndLineCap="Round">
+                                <Path.LayoutTransform>
+                                    <RotateTransform Angle="-90"/>
+                                </Path.LayoutTransform>
+                            </Path>
+                        </Viewbox>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ExpandImg" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="0"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:AccordionPanel}">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="#F8F9FA"/>
+        <Setter Property="BackgroundBody" Value="#F8F9FA"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThicknessBody" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderBrushBody" Value="Transparent"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:AccordionPanel}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="Header" Height="auto"/>
+                            <RowDefinition x:Name="Body" Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="Column1"/>
+                                    <ColumnDefinition x:Name="Column2" Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter x:Name="PART_HeaderContent" Grid.Column="0"
+                                                  Content="{TemplateBinding HeaderContent}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  IsHitTestVisible="True"
+                                                  Margin="{TemplateBinding Padding}">
+                                </ContentPresenter>
+
+                                <ToggleButton x:Name="PART_ToogleButton" 
+                                              Grid.Column="1" Width="25" Height="25" Margin="10"
+                                              Foreground="{StaticResource IconBrush}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Style="{StaticResource AccordoinToogleButtonTransform}">
+                                    <ToggleButton.Triggers>
+                                        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="PART_ToogleButton">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="PART_CanvasPanel" Storyboard.TargetProperty="Height" From="0" To="{Binding ElementName=contentBorder, Path=ActualHeight}" Duration="0:0:0.3" AccelerationRatio="0.5"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+
+                                        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="PART_ToogleButton">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="PART_CanvasPanel" Storyboard.TargetProperty="Height" From="{Binding ElementName=contentBorder, Path=ActualHeight}" To="0" Duration="0:0:0.3" AccelerationRatio="0.5"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ToggleButton.Triggers>
+                                </ToggleButton>
+                            </Grid>
+                        </Border>
+
+                        <Canvas ClipToBounds="True" x:Name="PART_CanvasPanel" Grid.Row="1" Height="0">
+                            <Border x:Name="contentBorder" 
+                                    HorizontalAlignment="Stretch" 
+                                    Background="{TemplateBinding BackgroundBody}" BorderBrush="{TemplateBinding BorderBrushBody}" BorderThickness="{TemplateBinding BorderThicknessBody}"
+                                    Width="{TemplateBinding ActualWidth}"><!--Width="{Binding ElementName=parentConteiner, Path=ActualWidth}"-->
+                                <ContentPresenter x:Name="PART_BodyContent"
+                                                  Content="{TemplateBinding BodyContent}"
+                                                 
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  IsHitTestVisible="True"
+                                                  Margin="{TemplateBinding Padding}">
+                                </ContentPresenter>
+                            </Border>
+                        </Canvas>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ToogleButtonPosition" Value="Left">
+                            <Setter TargetName="Column1" Property="Width" Value="auto"/>
+                            <Setter TargetName="Column2" Property="Width" Value="*"/>
+                            <Setter TargetName="PART_HeaderContent" Property="Grid.Column" Value="1"/>
+                            <Setter TargetName="PART_ToogleButton" Property="Grid.Column" Value="0"/>
+                        </Trigger>
+
+                        <Trigger Property="ToogleButtonPosition" Value="Right">
+                            <Setter TargetName="Column1" Property="Width" Value="*"/>
+                            <Setter TargetName="Column2" Property="Width" Value="auto"/>
+                            <Setter TargetName="PART_HeaderContent" Property="Grid.Column" Value="0"/>
+                            <Setter TargetName="PART_ToogleButton" Property="Grid.Column" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

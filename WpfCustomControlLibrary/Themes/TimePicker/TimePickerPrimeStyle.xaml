@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WpfCustomControlLibrary.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/Brushes.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/TextBox/Generic.xaml"/>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ToggleButton/ToggleButtonPrimeStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="TimePickerStylePrimeStyle" TargetType="{x:Type controls:TimePicker}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TimePicker}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                       
+                        <TextBox x:Name="PART_TextBox" Grid.Column="0">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="5 0 0 5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+
+                        <ToggleButton x:Name="PART_ToggleButton"
+                                      Grid.Column="1"
+                                      IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      Style="{StaticResource ToggleButtonControlStyle}">
+
+                            <Path Margin="10 0"
+                                  Data="M9.82886 8.90084C10.4917 8.03987 10.8834 7.05836 10.9867 5.99506C11.0168 5.69372 10.9931 4.98772 10.9436 4.67131C10.8532 4.09877 10.6983 3.60801 10.4379 3.07851C10.1538 2.49951 9.85899 2.0884 9.38554 1.61271C8.90994 1.13917 8.49891 0.844291 7.92001 0.56017C7.382 0.295422 6.89349 0.142598 6.30599 0.0500441C5.87558 -0.0166817 5.12237 -0.0166817 4.69196 0.0500441C4.10446 0.142598 3.61595 0.295422 3.07794 0.56017C2.49905 0.844291 2.08801 1.13917 1.61241 1.61271C1.13896 2.0884 0.844134 2.49951 0.560066 3.07851C0.29967 3.61017 0.146876 4.08801 0.0500347 4.68208C-0.0166782 5.1018 -0.0166782 5.8982 0.0500347 6.31792C0.146876 6.91199 0.29967 7.38983 0.560066 7.92149C0.844134 8.50049 1.13896 8.9116 1.61241 9.38729C2.08801 9.86083 2.49905 10.1557 3.07794 10.4398C3.60949 10.7003 4.08724 10.8531 4.6812 10.95C5.10085 11.0167 5.8971 11.0167 6.31675 10.95C6.65892 10.894 7.10224 10.7799 7.39061 10.6744C7.64885 10.5797 8.19117 10.315 8.40422 10.1794C8.89918 9.86513 9.50606 9.32057 9.82886 8.90084ZM9.30161 2.61574C9.79443 3.27654 10.1 4.00406 10.2227 4.81122C10.255 5.03077 10.2829 5.69157 10.2636 5.84439C10.26 5.87844 10.2489 5.96471 10.2379 6.05103C10.2357 6.06839 10.2335 6.08575 10.2313 6.10268C10.1323 6.91199 9.81164 7.70194 9.30161 8.38426C9.10578 8.64685 8.6474 9.10532 8.38054 9.30335C7.51758 9.94908 6.56853 10.2655 5.49898 10.2655C4.42942 10.2655 3.48037 9.94908 2.61525 9.30335C2.35271 9.10747 1.89217 8.64685 1.69634 8.38426C1.05073 7.51898 0.73438 6.56976 0.73438 5.5C0.73438 4.43024 1.05073 3.48102 1.69634 2.61574C1.89217 2.35315 2.35056 1.89468 2.61741 1.69665C3.28238 1.19944 4.00116 0.898102 4.83185 0.771109C5.16971 0.71945 5.82824 0.71945 6.1661 0.771109C7.00109 0.900254 7.6962 1.19083 8.3827 1.69881C8.64524 1.89252 9.10363 2.35315 9.30161 2.61574ZM9.1682 5.83153C9.26289 5.78848 9.32745 5.7153 9.36188 5.61413C9.39847 5.51297 9.39847 5.50866 9.37264 5.40965C9.34251 5.30633 9.25428 5.20087 9.16389 5.16427C9.10794 5.1406 8.79805 5.13414 7.50253 5.13414L5.91003 5.13414L5.90357 3.91156C5.89711 2.76216 5.89496 2.68683 5.85623 2.60934C5.76799 2.43069 5.54418 2.3575 5.37202 2.44791C5.25796 2.50602 5.20201 2.57705 5.17618 2.69328C5.16542 2.73848 5.15466 3.47246 5.15466 4.32052V5.86597H7.12592C8.86476 5.86597 9.10579 5.86166 9.1682 5.83153Z"
+                                  Stroke="white" 
+                                  StrokeThickness="1" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                        </ToggleButton>
+
+                        <Popup x:Name="PART_Popup"
+                               HorizontalOffset="1"
+                               VerticalOffset="1"
+                               StaysOpen="False"
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               PopupAnimation="Slide"
+                               IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}">
+                            <Grid x:Name="DropDown" Margin="10"
+                                  SnapsToDevicePixels="True"                
+                                  Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}"
+                                  MaxHeight="200">
+                                <Border
+                                        x:Name="DropDownBorder"
+                                        CornerRadius="5"
+                                        BorderThickness="0"
+                                        Background="White">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="2" Opacity="0.2" Direction="270" BlurRadius="10"/>
+                                    </Border.Effect>
+                                    <controls:TimeSpanUpDown x:Name="PART_TimeSpanUpDown"
+                                                          BorderThickness="0" Foreground="{StaticResource TextBrush}"
+                                                          Padding="0 20"
+                                                          VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"
+                                                          SecondsVisibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SecondsVisibility}"
+                                                          DaysVisibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=DaysVisibility}"/>
+                                </Border>
+                            </Grid>
+                        </Popup>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

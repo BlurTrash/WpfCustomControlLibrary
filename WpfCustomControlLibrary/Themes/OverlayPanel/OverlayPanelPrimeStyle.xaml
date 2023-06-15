@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WpfCustomControlLibrary.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WpfCustomControlLibrary;component/Themes/ButtonPrime/ButtonPrimeStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="OverlayPanelPrimeStyle" TargetType="{x:Type controls:OverlayPanel}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:OverlayPanel}">
+                    <Popup x:Name="PART_Popup"
+                           AllowsTransparency="{TemplateBinding AllowsTransparency}"
+                           PlacementTarget="{TemplateBinding PlacementTarget}"
+                           Placement="{TemplateBinding Placement}"
+                           StaysOpen="{TemplateBinding StaysOpen}"
+                           IsOpen="{TemplateBinding IsOpen}">
+                        <Grid Margin="11">
+                            <Border Background="White" CornerRadius="5">
+                                <Border.Effect>
+                                    <DropShadowEffect RenderingBias="Quality" ShadowDepth="1" Opacity="0.3" Color="Black" Direction="270" BlurRadius="9"/>
+                                </Border.Effect>
+                                <Grid>
+                                    <ContentPresenter />
+                                    <controls:ButtonPrime x:Name="btn" Height="{Binding RelativeSource={RelativeSource Self}, Path=Width}"
+                                                    Icon="Times" 
+                                                    IsRounded="True"
+                                                    FontSize="12"
+                                                    Padding="2"
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top"
+                                                    Visibility="Collapsed" Style="{StaticResource ButtonPrimeStyle}"
+                                                    Margin="0,-10,-10,0" Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToggleCommand}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowCloseIcon" Value="True">
+                            <Setter TargetName="btn" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
