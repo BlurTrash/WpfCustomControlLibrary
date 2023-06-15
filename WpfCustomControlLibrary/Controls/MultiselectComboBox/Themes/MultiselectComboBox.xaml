@@ -330,46 +330,47 @@
                                     </Button.Template>
                                 </Button>
 
-                                <Popup x:Name="PART_Dropdown_Popup"
-                                       MaxHeight="{Binding Path=MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}" 
+                                <Popup x:Name="PART_Dropdown_Popup" VerticalOffset="1"
                                        IsOpen="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
-                                       PlacementTarget="{Binding ElementName=PART_MultiSelectComboBox}"
-                                       Width="{TemplateBinding ActualWidth}"
                                        Placement="Bottom" AllowsTransparency="True" PopupAnimation="Slide" StaysOpen="{TemplateBinding StaysOpen}">
-                                    <Border x:Name="dropDownBorder" Background="{StaticResource MultiSelectComboBox.DropDown.BackgroundBrush}">
-                                        <!--<Border.Effect>
-                                            <DropShadowEffect Color="Black" ShadowDepth="1" Opacity="0.2" Direction="270" BlurRadius="3"/>
-                                        </Border.Effect>-->
-                                        <Grid x:Name="grid">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Border x:Name="dropDownBorder"
+                                                MaxHeight="{Binding Path=MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Background="{StaticResource MultiSelectComboBox.DropDown.BackgroundBrush}" Margin="2">
+                                            <Border.Effect>
+                                                <DropShadowEffect Color="Black" ShadowDepth="2" Opacity="0.1" Direction="270" BlurRadius="12"/>
+                                            </Border.Effect>
+                                            <Grid x:Name="grid">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
 
-                                            <Border Grid.Row="0"
+                                                <Border Grid.Row="0"
                                             Background="{StaticResource MultiSelectComboBox.DropDown.HeaderBrush}" 
                                             BorderBrush="{StaticResource MultiSelectComboBox.DropDown.BorderBrush}" 
                                             BorderThickness="0 0 0 1" Padding="15 10">
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto"/>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition Width="auto"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <CheckBox Grid.Column="0" Visibility="Collapsed" x:Name="PART_Dropdown_CheckBox" Margin="0 0 10 0" Style="{StaticResource MultiSelectComboBoxCheckBox}"></CheckBox>
-                                                    <TextBox Grid.Column="1" x:Name="PART_Dropdown_SearchTextBox" Style="{StaticResource SearchTextBox}"></TextBox>
-                                                    <Button Grid.Column="2" x:Name="PART_Dropdown_CloseButton" Width="25" Height="25" Margin="15 0 0 0" Style="{StaticResource CloseButton}">
-                                                        <TextBlock Grid.Column="1"
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <CheckBox Grid.Column="0" Visibility="Collapsed" x:Name="PART_Dropdown_CheckBox" Margin="0 0 10 0" Style="{StaticResource MultiSelectComboBoxCheckBox}"></CheckBox>
+                                                        <TextBox Grid.Column="1" x:Name="PART_Dropdown_SearchTextBox" Style="{StaticResource SearchTextBox}"></TextBox>
+                                                        <Button Grid.Column="2" x:Name="PART_Dropdown_CloseButton" Width="25" Height="25" Margin="15 0 0 0" Style="{StaticResource CloseButton}">
+                                                            <TextBlock Grid.Column="1"
                                                         Text="{Binding Source={x:Static local:IconType.Times}, Converter={StaticResource IconConverter}}"
                                                         FontFamily="{StaticResource PrimeIcons}"
                                                         Foreground="{StaticResource IconBrush}"
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"/>
-                                                    </Button>
-                                                </Grid>
-                                            </Border>
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
 
-                                            <local:ExtendedListBox Grid.Row="1" x:Name="PART_Dropdown_ListBox"
+                                                <local:ExtendedListBox Grid.Row="1" x:Name="PART_Dropdown_ListBox"
                                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
                                                            
                                                            SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedItem}"
@@ -377,12 +378,14 @@
                                                            SelectedIndex="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedIndex}"
                                                            SelectedValuePath="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValuePath}"
                                                            SelectionMode="{TemplateBinding SelectionMode}"                                             
-                                                           ItemTemplate="{TemplateBinding ItemTemplate}"/> <!--ItemsSource="{TemplateBinding ItemsSource}"-->
-                                            <TextBlock Name="TB_NoResult" Grid.Row="1" Text="Не найден" Margin="10 0 0 0"
+                                                           ItemTemplate="{TemplateBinding ItemTemplate}"/>
+                                                <!--ItemsSource="{TemplateBinding ItemsSource}"-->
+                                                <TextBlock Name="TB_NoResult" Grid.Row="1" Text="Не найден" Margin="10 0 0 0"
                                                            VerticalAlignment="Center" HorizontalAlignment="Left"
                                                            Visibility="Hidden"/>
-                                        </Grid>
-                                    </Border>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
                                 </Popup>
                             </Grid>
                         </Border>
