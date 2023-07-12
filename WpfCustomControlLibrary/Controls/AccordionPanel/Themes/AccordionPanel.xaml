@@ -68,7 +68,7 @@
                             <RowDefinition x:Name="Body" Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border x:Name="headerBorder" Grid.Row="0" Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition x:Name="Column1"/>
@@ -111,7 +111,7 @@
                         </Border>
 
                         <Canvas ClipToBounds="True" x:Name="PART_CanvasPanel" Grid.Row="1" Height="0">
-                            <Border x:Name="contentBorder" 
+                            <Border x:Name="contentBorder" CornerRadius="5"
                                     HorizontalAlignment="Stretch" 
                                     Background="{TemplateBinding BackgroundBody}" BorderBrush="{TemplateBinding BorderBrushBody}" BorderThickness="{TemplateBinding BorderThicknessBody}"
                                     Width="{TemplateBinding ActualWidth}"><!--Width="{Binding ElementName=parentConteiner, Path=ActualWidth}"-->
@@ -140,6 +140,12 @@
                             <Setter TargetName="Column2" Property="Width" Value="auto"/>
                             <Setter TargetName="PART_HeaderContent" Property="Grid.Column" Value="0"/>
                             <Setter TargetName="PART_ToogleButton" Property="Grid.Column" Value="1"/>
+                        </Trigger>
+
+
+                        <Trigger SourceName="PART_ToogleButton" Property="IsChecked" Value="true">
+                            <Setter TargetName="headerBorder" Property="CornerRadius" Value="5 5 0 0"/>
+                            <Setter TargetName="contentBorder" Property="CornerRadius" Value="0 0 5 5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

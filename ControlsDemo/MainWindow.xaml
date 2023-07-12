@@ -113,7 +113,8 @@
             </Grid>
 
             <Grid Margin="10">
-                <controls:AccordionPanel ToogleButtonPosition="Left">
+                <controls:AccordionPanel Background="{StaticResource HighlightBrush}" BorderThickness="1" BorderBrush="{StaticResource FocusRingBrush}" ToogleButtonPosition="Left"
+                                         BorderBrushBody="{StaticResource ControlBorderBrush}" BorderThicknessBody="1 0 1 1">
                     <controls:AccordionPanel.HeaderContent>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -124,12 +125,12 @@
 
                             <TextBlock Text="AccordionPanel" FontWeight="Medium" Foreground="#495057" VerticalAlignment="Center"/>
                             <controls:ButtonPrime Grid.Column="1" Icon="Filter" Content="Поиск" HorizontalContentAlignment="Center"/>
-                            <controls:ButtonPrime Grid.Column="2" Icon="FilterSlash" Content="Очистить" Margin="10 0 0 0" IsOutlined="True"/>
+                            <controls:ButtonPrime Grid.Column="2" Icon="FilterSlash" Content="Очистить" Margin="10 0 10 0" IsOutlined="True"/>
                         </Grid>
                     </controls:AccordionPanel.HeaderContent>
 
                     <controls:AccordionPanel.BodyContent>
-                        <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" Margin="10">
                             <TextBlock Text="Контент внутри!!"/>
                             <TextBlock Text="Контент внутри!!"/>
                             <TextBlock Text="Контент внутри!!"/>
